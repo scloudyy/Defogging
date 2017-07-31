@@ -1,1 +1,3 @@
-Implement GuidedFilter with Python(Pillow+Numpy)
+# Defogging
+
+Implement Defogging with Python(Pillow+Numpy)
