@@ -1,0 +1,6 @@
+*.png
+*.bmp
+*.jpg
+.idea/
+.vscode/
+node_modules/
