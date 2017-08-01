@@ -1,3 +1,5 @@
+#!/use/bin/env python3
+# -*- coding: utf-8 -*-
 from numpy import *
 
 
@@ -21,9 +23,9 @@ def quadtree(src, L, min_r):
     (hei, wid) = src.shape[0:2]
     if hei < min_r or wid < min_r:
         al = zeros((1,1,3))
-        al[1, 1, 1] = mean(src[:, :, 1])
-        al[1, 1, 2] = mean(src[:, :, 2])
-        al[1, 1, 3] = mean(src[:, :, 3])
+        al[0, 0, 0] = mean(src[:, :, 0])
+        al[0, 0, 1] = mean(src[:, :, 1])
+        al[0, 0, 2] = mean(src[:, :, 2])
         return al
     mid_hei = floor(hei / 2)
     mid_wid = floor(wid / 2)
@@ -40,3 +42,4 @@ def quadtree(src, L, min_r):
     else:
         al = quadtree(src[mid_hei:hei, mid_wid:wid, :], L[mid_hei:hei, mid_wid:wid], min_r)
     return al
+
