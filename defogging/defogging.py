@@ -6,6 +6,7 @@ import sys
 from airlight import airlight
 from transmission import transmission
 from guidedfilter import guidedfilter
+from recover import recover
 
 
 def defogging():
@@ -17,6 +18,11 @@ def defogging():
     A = airlight(src, L, 0.2)
     trans = transmission(src, A, round(0.02 * min(hei, wid)), 0.95)
     trans_refined = guidedfilter(trans, L, 30, 1e-6)
+    dst = recover(src, A, trans_refined)
+
+    dst_img = Image.fromarray(uint8(dst * 255))
+    outname = args[1] + "_defogging.bmp"
+    dst_img.save(outname)
 
 
 if __name__ == '__main__':
