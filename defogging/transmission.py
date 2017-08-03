@@ -11,14 +11,12 @@ def transmission(src, A, r, w):
     :return: dst
     """
     (hei, wid) = src.shape[0:2]
-    dst = zeros((hei, wid))
-    tmp = zeros((hei, wid, 3))
-    min_tmp = zeros((hei, wid))
-    for c in range(3):
-        tmp[:, :, c] = src[:, :, c] / A[0, 0, c]
-    tmp[:, :, :] = ones((hei, wid, 3)) - tmp[:, :, :]
+    tmp = zeros((hei, wid))
     for i in range(hei):
         for j in range(wid):
-            min_tmp[i, j] = min(tmp[i, j])
-    dst = minfilter(min_tmp, r)
+            tmp[i, j] = min(src[i, j, :] / A[0, 0, :])
+    min_tmp = minfilter(tmp, r)
+    dst = ones((hei, wid)) - min_tmp[:, :]
+
+    dst  = vectorize(lambda x: x if x > 0.1 else 0.1)(dst)
     return dst

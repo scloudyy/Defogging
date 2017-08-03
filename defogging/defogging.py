@@ -16,7 +16,7 @@ def defogging():
     (hei, wid) = src.shape[0:2]
     A = airlight(src, L, 0.2)
     trans = transmission(src, A, round(0.02 * min(hei, wid)), 0.95)
-    trans_refined = guidedfilter(trans, L, 10, 1e-6)
+    trans_refined = guidedfilter(trans, L, 30, 1e-6)
 
 
 if __name__ == '__main__':
