@@ -27,8 +27,8 @@ def quadtree(src, L, min_r):
         al[0, 0, 1] = mean(src[:, :, 1])
         al[0, 0, 2] = mean(src[:, :, 2])
         return al
-    mid_hei = floor(hei / 2)
-    mid_wid = floor(wid / 2)
+    mid_hei = floor(hei / 2).astype(int)
+    mid_wid = floor(wid / 2).astype(int)
     quad1 = mean(L[0:mid_hei, 0:mid_wid])
     quad2 = mean(L[mid_hei:hei, 0:mid_wid])
     quad3 = mean(L[0:mid_hei, mid_wid:wid])
