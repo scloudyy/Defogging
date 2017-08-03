@@ -4,6 +4,8 @@ from numpy import *
 from PIL import Image
 import sys
 from airlight import airlight
+from transmission import transmission
+from guidedfilter import guidedfilter
 
 
 def defogging():
@@ -11,7 +13,11 @@ def defogging():
     img = Image.open(args[1])
     src = array(img).astype(float) / 255
     L = array(img.convert("L")).astype(float) / 255
+    (hei, wid) = src.shape[0:2]
     A = airlight(src, L, 0.2)
+    trans = transmission(src, A, round(0.02 * min(hei, wid)), 0.95)
+    trans_refined = guidedfilter(trans, L, 10, 1e-6)
+
 
 if __name__ == '__main__':
     defogging()
