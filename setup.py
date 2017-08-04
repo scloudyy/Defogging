@@ -3,6 +3,7 @@ from setuptools import setup, find_packages
 import sys, os
 """
 python setup.py register sdist upload
+python setup.py register sdist upload -r "https://test.pypi.org/legacy/"
 """
 
 VERSION = '0.1.6'

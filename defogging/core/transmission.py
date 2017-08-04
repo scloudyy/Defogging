@@ -1,7 +1,7 @@
 from numpy import *
-from .minfilter import cal_minfilter
+from core import minfilter
 
-def cal_transmission(src, A, r, w):
+def transmission(src, A, r, w):
     """
 
     :param src: original input image(three channels)
@@ -15,7 +15,7 @@ def cal_transmission(src, A, r, w):
     for i in range(hei):
         for j in range(wid):
             tmp[i, j] = min(src[i, j, :] / A[0, 0, :])
-    min_tmp = cal_minfilter(tmp, r)
+    min_tmp = minfilter.minfilter(tmp, r)
     dst = ones((hei, wid)) - min_tmp[:, :]
 
     dst  = vectorize(lambda x: x if x > 0.1 else 0.1)(dst)
