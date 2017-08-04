@@ -9,9 +9,7 @@ from guidedfilter import guidedfilter
 from recover import recover
 
 
-def defogging():
-    args = sys.argv
-    img = Image.open(args[1])
+def defogging(img):
     src = array(img).astype(float) / 255
     L = array(img.convert("L")).astype(float) / 255
     (hei, wid) = src.shape[0:2]
@@ -23,7 +21,10 @@ def defogging():
     dst_img = Image.fromarray(uint8(dst * 255))
     outname = args[1] + "_defogging.bmp"
     dst_img.save(outname)
+    return dst_img
 
 
 if __name__ == '__main__':
-    defogging()
+    args = sys.argv
+    img = Image.open(args[1])
+    defogging(img)
