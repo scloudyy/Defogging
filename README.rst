@@ -3,7 +3,7 @@ defogging
 ====
 
 
-.. image:: https://img.shields.io/pypi/v/nine.svg
+.. image:: https://img.shields.io/pypi/v/defogging.svg
         :target: https://pypi.python.org/pypi/defogging/
 
 Implement Defogging with Python
@@ -21,7 +21,7 @@ Use pip to install
 
 .. code-block:: bash::
 
-    pip install defogging
+    $ pip install defogging
 
 usage
 -----

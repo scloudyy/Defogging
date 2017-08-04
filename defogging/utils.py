@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def padding(src, r):
+def cal_padding(src, r):
     """
     padding: used to padding the edges of the src with width of r
 

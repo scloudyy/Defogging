@@ -4,7 +4,7 @@ from numpy import *
 from numpy.matlib import repmat
 
 
-def guidedfilter(src, I, r, eps):
+def cal_guidedfilter(src, I, r, eps):
     """
     guidedfilter: O(1) time implementation of guided filter.
 
