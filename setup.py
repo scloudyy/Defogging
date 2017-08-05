@@ -3,6 +3,7 @@ from setuptools import setup, find_packages
 import sys, os
 """
 python setup.py register sdist upload
+python setup.py register sdist upload -r "https://test.pypi.org/legacy/"
 """
 
 VERSION = '0.1.6'
@@ -21,7 +22,7 @@ setup(
     author_email='onecloud.shen@gmail.com',
     url='https://github.com/scloudyy/Defogging',
     license='GPL',
-    packages=['defogging'],
+    packages=['defogging', 'defogging/core'],
     include_package_data=True,
     zip_safe=True,
     install_requires=[
