@@ -22,7 +22,7 @@ setup(
     author_email='onecloud.shen@gmail.com',
     url='https://github.com/scloudyy/Defogging',
     license='GPL',
-    packages=['defogging'],
+    packages=['defogging', 'defogging/core'],
     include_package_data=True,
     zip_safe=True,
     install_requires=[
