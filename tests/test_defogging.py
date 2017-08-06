@@ -1,3 +1,4 @@
+import pytest
 import sys
 from PIL import Image
 from defogging.defogging import defogging

@@ -7,3 +7,4 @@ node_modules/
 dist/
 defogging.egg-info/
 build/
+.cache/

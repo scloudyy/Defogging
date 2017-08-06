@@ -1,5 +1,6 @@
 from numpy import *
-from .utils import padding
+
+from defogging.utils.padding import padding
 
 
 def minfilter(src, r):
