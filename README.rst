@@ -6,6 +6,9 @@ defogging
 .. image:: https://img.shields.io/pypi/v/defogging.svg
         :target: https://pypi.python.org/pypi/defogging/
 
+.. image:: https://img.shields.io/travis/scloudyy/Defogging.svg
+        :target: https://travis-ci.org/scloudyy/Defogging
+
 Implement Defogging with Python
 
 
