@@ -9,7 +9,7 @@ pip install -i https://testpypi.python.org/simple/ defogging
 
 VERSION = '0.1.6'
 
-with open('README.md') as readme_file:
+with open('README.rst') as readme_file:
     readme = readme_file.read()
 
 setup(

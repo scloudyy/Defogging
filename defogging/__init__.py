@@ -6,7 +6,7 @@ class Defog():
     def readfromarray(self):
         return 1
 
-    def defog(self, darkchannel_r = 0.02):
+    def defog(self):
         return 1
 
     def save(self):
