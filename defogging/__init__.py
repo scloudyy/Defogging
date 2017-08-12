@@ -1,5 +1,6 @@
 from PIL import Image
 import numpy as np
+from .defogging import defogging
 
 
 class Defog():
@@ -33,7 +34,7 @@ class Defog():
             self.__foggy_src = array.astype(float) / 255
 
     def defog(self):
-        return 1
+        self.__defogged = defogging(self.__foggy_src)
 
     def get_array(self, range):
         """

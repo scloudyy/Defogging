@@ -1,15 +1,14 @@
 import pytest
 import sys
-from PIL import Image
-from defogging.defogging import defogging
+from defogging import Defog
 
 def main():
     args = sys.argv
-    name = args[1]
-    img = Image.open(name)
-    dst = defogging(img)
-    dst_name = name + "_defogging.bmp"
-    dst.save(dst_name)
+    df = Defog()
+    df.read_img(args[1])
+    df.defog()
+    out_name = args[1] + "_defogged.bmp"
+    df.save_img(out_name)
 
 if __name__ == '__main__':
     main()
