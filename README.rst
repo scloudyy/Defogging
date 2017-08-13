@@ -20,11 +20,11 @@ Features
 install
 -------
 
-Use ``pip`` to install ::
+Use ``pip`` to install: ::
 
     $ pip install defogging
 
-Or you can install from source ::
+Or you can install from source: ::
 
     $ git clone git@github.com:scloudyy/Defogging.git
     $ cd Defogging
@@ -34,7 +34,7 @@ Or you can install from source ::
 Usage
 -----
 
-Use ``defogging`` through command line ::
+Use ``defogging`` through command line: ::
 
    $ defogging your_img.bmp
 
@@ -54,16 +54,14 @@ And you can also use ``defogging`` in your own code:
    df.defog()
    df.save_img(out_name)
 
-you can directly input a foggy object in the form of ``numpy.array``:
+you can directly input a foggy object in the form of ``numpy.array`` :
 
 .. code-block:: python
 
    df.read_array(your_array, range)
 
 where ``range`` indicates the value range of your array.The range has two options:
-
 the first is ``1``, which means the value range of your array is [0,1],
-
 and the second is ``255``, which means the value range is [0,255]
 
 If you want to process the defogged object further, you can also get defogged array:
