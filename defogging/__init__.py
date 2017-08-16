@@ -1,5 +1,7 @@
 from PIL import Image
 import numpy as np
+import sys
+
 from .defogging import defogging
 
 
@@ -59,4 +61,13 @@ class Defog():
         defogged_img = Image.fromarray(np.uint8(self.__defogged * 255))
         defogged_img.save(name)
 
+def main():
+    args = sys.argv
+    name = args[1]
+    df = Defog()
+    df.read_img(name)
+    df.defog()
+    df.save_img(name + "_defogged.bmp")
 
+if __name__ == '__main__':
+    main()

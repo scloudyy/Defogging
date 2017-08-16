@@ -32,7 +32,7 @@ setup(
     ],
     entry_points={
         'console_scripts':[
-        'defogging = defogging.defogging:main'
+        'defogging = defogging:main'
         ]
     },
 )

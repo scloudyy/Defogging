@@ -19,12 +19,3 @@ def defogging(src):
     trans_refined = guidedfilter(trans, L, 30, 1e-6)
     dst = recover(src, A, trans_refined)
     return dst
-
-def main():
-    args = sys.argv
-    img = Image.open(args[1])
-    src = array(img).astype(float) / 255
-    defogging(src)
-
-if __name__ == '__main__':
-    main()
