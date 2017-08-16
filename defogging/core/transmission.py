@@ -1,5 +1,7 @@
 from numpy import *
-from .minfilter import minfilter
+
+from defogging.utils.minormaxfilter import min_or_max
+
 
 def transmission(src, A, r, w):
     """
@@ -15,7 +17,7 @@ def transmission(src, A, r, w):
     for i in range(hei):
         for j in range(wid):
             tmp[i, j] = min(src[i, j, :] / A[0, 0, :])
-    min_tmp = minfilter(tmp, r)
+    min_tmp = min_or_max(tmp, r, "min")
     dst = ones((hei, wid)) - min_tmp[:, :]
 
     dst  = vectorize(lambda x: x if x > 0.1 else 0.1)(dst)

@@ -32,11 +32,13 @@ class Defog():
         """
         if range == 1:
             self.__foggy_src = array.astype(float)
+            self.__foggy_img = Image.fromarray(np.uint8(array * 255))
         elif range == 255:
             self.__foggy_src = array.astype(float) / 255
+            self.__foggy_img = Image.fromarray(np.uint8(array))
 
     def defog(self):
-        self.__defogged = defogging(self.__foggy_src)
+        self.__defogged = defogging(self.__foggy_src, self.__foggy_img)
 
     def get_array(self, range):
         """
