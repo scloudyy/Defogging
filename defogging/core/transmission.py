@@ -1,9 +1,11 @@
 from numpy import *
 
 from defogging.utils.minormaxfilter import min_or_max
+from .patchshift import patchshift
+from .guidedfilter import guidedfilter
 
 
-def transmission(src, A, r, w):
+def transmission(src, A, r, w, L):
     """
 
     :param src: original input image(three channels)
@@ -21,4 +23,6 @@ def transmission(src, A, r, w):
     dst = ones((hei, wid)) - min_tmp[:, :]
 
     dst  = vectorize(lambda x: x if x > 0.1 else 0.1)(dst)
-    return dst
+    dst = patchshift(dst, r, L)
+    dst_refined = guidedfilter(dst, L, 30, 1e-6)
+    return dst_refined
