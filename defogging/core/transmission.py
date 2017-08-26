@@ -23,6 +23,6 @@ def transmission(src, A, r, w, L):
     dst = ones((hei, wid)) - min_tmp[:, :]
 
     dst  = vectorize(lambda x: x if x > 0.1 else 0.1)(dst)
-    dst = patchshift(dst, r, L)
+
     dst_refined = guidedfilter(dst, L, 30, 1e-6)
     return dst_refined
