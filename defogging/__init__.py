@@ -47,7 +47,7 @@ class Defog():
         :param range: the range of the defogged array, only in two value: 1 and 255
                       1 means array's range in [0,1], 255 means array's range in [0,255]
         """
-        if self.__defogged == None:
+        if not isinstance(self.__defogged, np.ndarray):
             return 0
         if range == 1:
             return self.__defogged
