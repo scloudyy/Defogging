@@ -1,7 +1,7 @@
 from numpy import *
 
 
-def cal_recover(src, A, trans):
+def recover(src, A, trans):
     """
     J = (I(x) - A) / t(x) +A
 

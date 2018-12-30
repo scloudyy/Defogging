@@ -1,7 +1,11 @@
 from numpy import *
-from .minfilter import cal_minfilter
 
-def cal_transmission(src, A, r, w):
+from defogging.utils.minormaxfilter import min_or_max
+from .patchshift import patchshift
+from .guidedfilter import guidedfilter
+
+
+def transmission(src, A, r, w, L):
     """
 
     :param src: original input image(three channels)
@@ -15,8 +19,10 @@ def cal_transmission(src, A, r, w):
     for i in range(hei):
         for j in range(wid):
             tmp[i, j] = min(src[i, j, :] / A[0, 0, :])
-    min_tmp = cal_minfilter(tmp, r)
+    min_tmp = min_or_max(tmp, r, "min")
     dst = ones((hei, wid)) - min_tmp[:, :]
 
     dst  = vectorize(lambda x: x if x > 0.1 else 0.1)(dst)
-    return dst
+
+    dst_refined = guidedfilter(dst, L, 30, 1e-6)
+    return dst_refined

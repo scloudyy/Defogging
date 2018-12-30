@@ -1,33 +1,22 @@
 #!/use/bin/env python3
 # -*- coding: utf-8 -*-
+
 from numpy import *
-from PIL import Image
-import sys
+import scipy.ndimage
 
-from .airlight import cal_airlight
-from .transmission import cal_transmission
-from .guidedfilter import cal_guidedfilter
-from .recover import cal_recover
+from .core.recover import recover
+from .core.airlight import airlight
+from .core.transmission import transmission
+from .utils.reshape import reshape
 
 
-def defogging(img, name):
-    src = array(img).astype(float) / 255
+def defogging(src, img):
     L = array(img.convert("L")).astype(float) / 255
-    (hei, wid) = src.shape[0:2]
-    A = cal_airlight(src, L, 0.2)
-    trans = cal_transmission(src, A, round(0.02 * min(hei, wid)), 0.95)
-    trans_refined = cal_guidedfilter(trans, L, 30, 1e-6)
-    dst = cal_recover(src, A, trans_refined)
-
-    dst_img = Image.fromarray(uint8(dst * 255))
-    outname = name + "_defogging.bmp"
-    dst_img.save(outname)
-    return dst_img
-
-def main():
-    args = sys.argv
-    img = Image.open(args[1])
-    defogging(img, args[1])
-
-if __name__ == '__main__':
-    main()
+    src_d = scipy.ndimage.zoom(src, (0.5,0.5,1))
+    L_d = scipy.ndimage.zoom(L, 0.5)
+    (hei, wid) = src_d.shape[0:2]
+    A = airlight(src_d, L_d, 0.2)
+    trans_d = transmission(src_d, A, round(0.02 * min(hei, wid)), 0.95, L_d)
+    trans = reshape(scipy.ndimage.zoom(trans_d, 2), src.shape[0:2])
+    dst = recover(src, A, trans)
+    return dst

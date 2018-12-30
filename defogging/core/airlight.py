@@ -3,7 +3,7 @@
 from numpy import *
 
 
-def cal_airlight(src, L, ratio):
+def airlight(src, L, ratio):
     """
     airlight: used to calculate values of airlight
 

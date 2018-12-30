@@ -2,10 +2,12 @@
 from setuptools import setup, find_packages
 import sys, os
 """
-python setup.py register sdist upload
+python setup.py register sdist bdist_egg upload
+python setup.py register sdist upload -r "https://test.pypi.org/legacy/"
+pip install -i https://testpypi.python.org/simple/ defogging
 """
 
-VERSION = '0.1.6'
+VERSION = '0.1.7'
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
@@ -21,7 +23,7 @@ setup(
     author_email='onecloud.shen@gmail.com',
     url='https://github.com/scloudyy/Defogging',
     license='GPL',
-    packages=['defogging'],
+    packages=['defogging', 'defogging/core', 'defogging/utils'],
     include_package_data=True,
     zip_safe=True,
     install_requires=[
@@ -30,7 +32,7 @@ setup(
     ],
     entry_points={
         'console_scripts':[
-        'defogging = defogging.defogging:main'
+        'defogging = defogging:main'
         ]
     },
 )
